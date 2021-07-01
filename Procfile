@@ -1,1 +1,1 @@
-web:gunicorn intergallactic.wsgi
+web: gunicorn intergallactic.wsgi
