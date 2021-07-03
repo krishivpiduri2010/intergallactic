@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .models import Object
 
@@ -20,9 +21,21 @@ def bubbleSort(arr):
 
 
 def home(request):
-    arr=[]
+    arr = []
     for obj in Object.objects.all():
         arr.append(obj)
-    print(arr)
     bubbleSort(arr)
-    return render(request, 'agenda/home.html',{'agenda':arr})
+    return render(request, 'agenda/home.html', {'agenda': arr})
+
+
+def create(request):
+    if request.method=='POST':
+        if request.POST.get('type')=='create':
+            object_=Object()
+            object_.to_time=request.POST.get('to')
+            object_.from_time=request.POST.get('from')
+            object_.name=request.POST.get('name')
+            object_.by=request.user
+            object_.save()
+            return HttpResponseRedirect('/agenda/')
+    return render(request, 'agenda/create.html')
