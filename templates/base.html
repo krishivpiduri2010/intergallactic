@@ -3,9 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <title>Intergalactic</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .sidenav {
+          height: 100%; /* Full-height: remove this if you want "auto" height */
+          width: 160px; /* Set the width of the sidebar */
+          position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+          z-index: 1; /* Stay on top */
+          top: 0; /* Stay at the top */
+          left: 0;
+          background-color: #328FFE; /* Black */
+          overflow-x: hidden; /* Disable horizontal scroll */
+          padding-top: 20px;
+        }
+
+        /* The navigation menu links */
+        .sidenav a {
+          padding: 6px 8px 6px 16px;
+          text-decoration: none;
+          font-size: 25px;
+          color: white;
+          display: block;
+        }
+
+        /* When you mouse over the navigation links, change their color */
+        .sidenav a:hover {
+          color: lightgrey;
+        }
+
+        /* Style page content */
+        .main {
+          margin-left: 160px; /* Same as the width of the sidebar */
+          padding: 0px 10px;
+        }
+
+        /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+        @media screen and (max-height: 450px) {
+          .sidenav {padding-top: 15px;}
+          .sidenav a {font-size: 18px;}
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     {% block css %}{% endblock %}
 </head>
 <body>
-{% block content %}{% endblock %}
+<div class="sidenav">
+  <a href="{% url 'agenda_home' %}"><i class="far fa-calendar-alt"></i> Agenda</a><br>
+  <a href="{% url 'agenda_home' %}"><i class="fas fa-money-bill"></i> Money</a><br>
+</div>
+<div class="main">
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
